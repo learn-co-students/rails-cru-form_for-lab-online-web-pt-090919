@@ -1,22 +1,28 @@
 Rails.application.routes.draw do
-  resources :artists, :songs, :genres, only: [:create, :update, :show]
-  get 'song/create', to: 'song#create'
+  resources :artists, :songs, :genres, only: [:create, :edit, :update, :show]
+  get '/song/create', to: 'song#create'
+  
+  get '/song/:id/edit', to: 'songs#edit'
 
-  get 'song/update', to: 'song#update'
+  patch '/songs/:id', to: 'songs#update'
 
-  get 'song/show', to: 'song#show'
+  get '/songs/:id/show', to: 'songs#show'
 
-  get 'genre/create', to: 'genre#create'
+  get '/genres/create', to: 'genres#create'
+  
+  get '/genres/:id/edit', to: 'genres#edit'
 
-  get 'genre/update', to: 'genre#update'
+  patch '/genres/:id', to: 'genres#update'
 
-  get 'genre/show', to: 'genre#show'
+  get '/genres/:id', to: 'genres#show'
 
-  get 'artist/create', to: 'artist#create'
+  get '/artists/create', to: 'artists#create'
 
-  get 'artist/update', to: 'artist#update'
+  get '/artists/:id/update', to: 'artists#edit'
+  
+  patch '/artists/:id', to: 'artists#update'
 
-  get 'artist/show', to: 'artist#show'
+  get '/artists/show', to: 'artists#show'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
